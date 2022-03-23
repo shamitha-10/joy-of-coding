@@ -1,0 +1,169 @@
+*******************************************************************************************
+1. Program to print the factors of a given integer 
+
+Example 
+
+	i/p 
+enter a number  512  
+
+o/p 
+The factors of the number are                                                                                      
+1       2       4       8       16      32      64      128     256     512           
+*******************************************************************************************
+#include<stdio.h>
+void main()
+{
+    int n,i;
+    printf("enter the number\n");
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+        if(n%i==0)
+          printf("%d\t",i);
+    }
+        
+}
+*******************************************************************************************
+2. Program to print the prime factors of a given integer 
+
+Example 
+
+i/p 
+enter a number  247  
+
+o/p  
+
+The prime factors of the number are                                                                                
+13      19   
+*******************************************************************************************
+#include<stdio.h>
+
+void main()
+{
+    int n,i,j,prm=0;
+    printf("enter the number\n");
+    scanf("%d",&n);
+    for(i=2;i<=n;i++)
+    {
+        if(n%i==0)
+        {
+             for(j=2;j<=i/2;j++)
+             {
+                if(i%j==0)
+                    prm=1;
+             }
+             if(prm!=1)
+               printf("%d\t",i);
+        }
+    }
+}
+*********************************************************************************************
+3. C program to check if the given number is Happy Number or not !!
+A number is said to be happy if it yields 1 when replaced by the sum of squares 
+of its digits repeatedly. 
+If this process results in an endless cycle of numbers containing 4, 
+then the number will be an unhappy number.
+Example 
+Number = 32
+32+ 22 = 13
+12 + 32 = 10
+12 + 02 = 1   Happy Number 
+
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+82 is a happy number number
+
+Some of the other examples of happy numbers are 7, 28, 100, 320 and so on.
+
+The unhappy number will result in a cycle of 4, 16, 37, 58, 89, 145, 42, 20, 4, ..
+********************************************************************************
+#include<stdio.h>
+
+int Happy_num(int num){    
+    int rem = 0, sum = 0;    
+        
+    while(num > 0){    
+        rem = num%10;    
+        sum = sum + (rem*rem);    
+        num = num/10;    
+    }    
+    return sum;    
+}    
+        
+void main()    
+{    
+    int num;    
+    int result;
+    printf("enter the number\n");
+    scanf("%d",&num);    
+    result=num;
+    
+    while(result != 1 && result != 4){    
+        result =Happy_num(result);    
+    }    
+        
+      
+    if(result == 1)    
+        printf("%d is a happy number", num);    
+      
+    else if(result == 4)    
+        printf("%d is not a happy number", num);     
+    
+}   
+*******************************
+4. Write a progam to check whether a number is a pronic number or not . Use Ternary operator
+A number is said to be pronic number if it is a product of two consecutive numbers.
+For examples:
+6 = 2 x 3
+72 = 8 x 9
+*******************************
+#include<stdio.h>
+#include<stdlib.h>
+
+void main()
+{
+    int n,a,i;
+    printf("enter the number\n");
+    scanf("%d",&n);
+    for(i=1;i<n;i++)
+    {
+       a=(i*(i+1)==n)?1:0;
+       if(a==1)
+        {   
+            printf("%d = %d * %d\n",n,i,i+1);
+            printf("the number is pronic\n");
+            exit(0);
+        }
+    }
+    printf("the number is not pronic\n");
+}
+*******************************
+5. Write aprogram to convert a decimal number to binary. 
+Example : input 120
+output : 1111000
+
+You can write programs to perform the other conversions as well.
+Such as decimal to octal, hexa decimal vice versa .
+*******************************
+#include<stdio.h>
+
+void main()
+{
+    int dec,num,rem,i=0,a[10],count=0;
+    printf("enter the decimal number\n");
+    scanf("%d",&dec);
+    while(num!=0)
+    {
+        num=dec/2;
+        rem=dec%2;
+        a[i]=rem;
+        dec=num;
+        i++;
+        count++;
+    }
+    for(i=count-1;i>=0;i--)
+    {
+        printf("%d",a[i]);
+    }
+}

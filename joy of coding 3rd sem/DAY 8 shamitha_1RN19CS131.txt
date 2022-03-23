@@ -1,0 +1,174 @@
+/***********************************************************************
+1. Write a program that declares and intializes a strucutre variable.
+print the values of that structure variable
+Consider :: the use case of a book stall and following details
+book_id, book_title, author, price
+***********************************************************************/
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+struct book
+{
+   int book_id;
+   char book_title[50];
+   char author[20];
+   int price;
+   
+};
+struct book n;
+
+void main()
+{
+    n.book_id=3456;
+    strcpy(n.book_title,"world");
+    strcpy(n.author,"rachita");
+    n.price=100;
+    printf("the book information are\n\n");
+    printf("the book id , book name , author, price\n");
+    printf("%d %s %s %d",n.book_id,n.book_title,n.author,n.price);
+    
+}
+
+/***********************************************************************
+ 2. Write a program to do the following (Use  array of structures)
+    a. Create a book database (title, author, rice, no_pages)
+    b. Update the book price based on the title.
+    c. Display appropriate message if updation fails.
+************************************************************************/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct book
+{
+   int pages;
+   char book_title[50];
+   char author[20];
+   int price;
+   
+};
+struct book n[100];
+
+
+void add_book(int* count)
+{
+    int num,i;
+    
+    printf("enter the no of books to be added\n");
+    scanf("%d",&num);
+    for(i=0;i<num;i++)
+    {   
+        printf("enter the book title\n");
+        scanf("%s",n[i].book_title);
+        printf("enter no of pages\n");
+        scanf("%d",&n[i].pages);
+        printf("enter the author name\n");
+        scanf("%s",n[i].author);
+        printf("enter the price of book\n");
+        scanf("%d",&n[i].price);
+        (*count)++;
+    }
+    
+}
+
+void update(int * count)
+{
+    int i,a,flag=0;
+    char name[50];
+    
+    printf("enter the book title\n");
+    scanf("%s",name);
+    for(i=0;i<(*count);i++)
+    {
+        a=strcmp(n[i].book_title,name);
+        if(a==0)
+        {
+           printf("enter the price to be updated\n");
+           scanf("%d",&n[i].price);
+           printf("the information is updated\n");
+           flag=1;
+        }
+    }
+    if(flag==0)
+    {
+        printf("the book is not available\n");
+        return;
+    }
+}
+void view_info(int count)
+{
+    int i;
+    printf("the book title, author,price and pages are displayed\n");
+    for(i=0;i<count;i++)
+    {
+        printf("%s %s %d %d\n",n[i].book_title,n[i].author,n[i].price,n[i].pages);
+    }
+}
+void main()
+{
+    int choice,count=0;
+    
+    printf("welcome to  online BOOK HOUSE stall\n");
+    for(;;)
+    {
+         printf("press 1:to add book information 2:update the book price\n");
+         printf("press 3:view book information   4:exit\n\n");
+         printf("enter your choice\n");
+         scanf("%d",&choice);
+         
+         switch(choice)
+         {
+             case 1:add_book(&count);
+                    break;
+                    
+             case 2:update(&count);
+                    break;
+                    
+             case 3:view_info(count);
+                    break;
+                    
+             case 4:exit(0);
+             
+         }
+         
+    }
+}
+ 
+/***********************************************************************
+3. Complete the following code segment with appropriate C statements 
+***********************************************************************/
+#include <stdio.h>
+struct book
+{
+    char title[10];
+    char author[10];
+    float price;
+    int no_pages;
+};
+
+void read(struct book *);
+void print(struct book *);
+
+int main()
+{
+   struct book bk;
+   struct book *sptr=&bk;
+   read(sptr);
+   print(sptr);
+   return 0;     
+}      
+   
+ void read(struct book *p) 
+{
+     printf("Enter the title, author name, price and number of pages in order");
+     scanf("%s%s%f%d",(p->title) ,(p->author) ,&(p->price),&(p->no_pages));                  
+}
+
+void print(struct book *p) 
+{
+    printf("The book details are\n");
+    printf("\n%s\t%s\t%f\t%d",(p->title) ,(p->author) ,(p->price),(p->no_pages)); 
+}

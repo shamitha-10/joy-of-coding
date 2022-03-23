@@ -1,0 +1,85 @@
+/*********************************************************************************************
+1. Write a program to accept and display string (Memory must be allocated dynamically) 
+   with out using functions 
+
+Sample i/o
+
+Input : rnsit
+Output: rnsit
+**********************************************************************************************/
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+
+void main()
+{
+    char s[10];
+    int n;
+  
+    printf("enter the string\n");
+    scanf("%s",s);
+    n=strlen(s);
+    char* s1=(char*)malloc(n * sizeof(char));
+    strcpy(s1,s);
+    printf("the string is %s",s1);
+    
+
+}
+
+
+/*********************************************************************************************
+2.  Write a program to accept and display string (Memory must be allocated dynamically)
+   using functions 
+*********************************************************************************************/
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+void allocate(char str[],int n)
+{
+    
+   char* s1=(char*)malloc(n * sizeof(char));
+    
+    printf("the string is %s", strcpy(s1,str));
+    
+}
+
+void main()
+{
+    char str[100];
+    int n;
+    printf("enter the string\n");
+    scanf("%s",str);
+    n=strlen(str);
+    allocate(str,n);
+    
+}
+/*********************************************************************************************
+3. Write a program to split string in to words with out using inbuilt function 
+***************************************************************************************/
+#include<stdio.h>
+
+void main()
+{
+    char str[100],a[100];
+    int i=0,j=0;
+    printf("enter the string\n");
+    scanf("%[^\n]",str);
+    
+    while(str[i]!='\0')
+    {
+        
+        if(str[i]==' ')
+        {   
+            a[j]='\0';
+            printf("%s\n",a);
+            j=0;
+        } 
+        a[j]=str[i];
+        j++;
+        i++;
+    }
+    a[j]='\0';
+    printf("%s\n",a);
+}

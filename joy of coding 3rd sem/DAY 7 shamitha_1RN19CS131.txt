@@ -1,0 +1,143 @@
+/*********************************************************************************
+1. Write a program to return the ascii value for a character 
+input : A  output: 65
+input : a  output: 97
+input :    output: 32   (Spac)
+*************************************************************************************/
+#include<stdio.h>
+
+void main()
+{
+    char c;
+    printf("enter the character\n");
+    scanf("%c",&c);
+    printf("%d",(int)c);
+}
+/*********************************************************************************
+2. Write a program that returns the max occured character in the given line of input 
+   ascii for space is 32
+
+input : every example is unique
+output: every example is unique
+************************************************************************************/
+#include<stdio.h>
+#include<string.h>
+
+void check_ch(char s[])
+{
+    int i=0,n,count=0;
+    char max,ch;
+    int max_count=0;
+    int space,j;
+    n=strlen(s);
+    
+    while(s[i]!='\0')
+    { 
+        ch=s[i];
+        count=0;
+        for(j=0;j<n;j++)
+        {
+            if(ch==s[j])
+            {
+                count++;
+            }
+        }
+        if(count>max_count)
+        {
+            max=s[i];
+            max_count=count;
+        }
+        i++;
+    }
+    if((int)max==32)
+        printf("the max repeated charater is space\n");
+    
+    else
+       printf("the max repeated charater is %c ",max);
+}
+
+
+void main()
+{
+    char str[100];
+    printf("enter the string\n");
+    scanf("%[^\n]",str);
+    check_ch(str);
+}
+
+/*********************************************************************************
+3. Write a program that returns the word count in a given sentence 
+   ascii for space is 32
+ input:every exampl is unique in its way
+ output : 7 
+***********************************************************************************/
+#include<stdio.h>
+#include<string.h>
+void check_num(char s[])
+{
+    int i=0,count=0;
+    char ch;
+    
+    while(s[i]!='\0')
+    {
+        ch=(int)s[i];
+        if(ch==32)
+        {
+            count++;
+        }
+        i++;
+    }
+    printf("the number of words in the sentence is %d",count+1);
+}
+
+void main()
+{
+    char str[100];
+    printf("enter the string\n");
+    scanf("%[^\n]",str);
+    check_num(str);
+}
+
+/*********************************************************************************
+4.  Number game  :: Input an element ( string, number etc) and if the input is a number 
+then accept, if the input is "done" then stop  accepting, 
+otherwise accept the next element and so on.
+Use the ele,ent "done" to stop accepting input and return the largest
+ and smallest element recieved 
+
+Sample input pattern    111 345 hello  356 678 111 999 bye 165 done
+output: the smallest is 111 the largest is 999 
+
+Hint Explore the usage of atoi function 
+don use integer array !!!!!!
+***********************************************************************************/
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+void main()
+{
+    char str[100];
+    int num,max=0,min;
+    printf("enter the element and once all is done enter done\n");
+    while(1)
+    {
+        scanf("%s",str);
+        num=strcmp(str,"done");
+        if(num==0)
+           break;
+        num=atoi(str);
+        if(num==0)
+           continue;
+        if(num>max)
+        {
+            max=num;
+        }
+        if(num<min)
+        {
+            min=num;
+        }
+    }
+    printf("The maximum number is %d\n",max);
+    printf("the minimum number is %d\n",min);
+}

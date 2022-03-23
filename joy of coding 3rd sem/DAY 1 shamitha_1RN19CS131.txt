@@ -1,0 +1,143 @@
+****************************************************************************
+1. Addition of two numbers without functions.
+****************************************************************************
+#include <stdio.h>
+
+void main()
+{
+    int a,b,sum;
+    
+    printf("enter the 2 numbers\n");
+    scanf("%d%d",&a,&b);
+    sum=a+b;
+    printf("result is %d",sum);
+    
+}
+****************************************************************************
+2. Addition of two numbers using functions
+   1. to accept values
+   2. to add two numbers
+   3. to display result    using suitable parameter passing technique
+****************************************************************************
+#include <stdio.h>
+
+void accept(int *a,int *b)
+{
+    printf("enter the 2 numbers\n");
+    scanf("%d%d",a,b);  
+}
+
+void add(int a,int b,int*sum)
+{
+     *sum=a+b;
+}
+
+void display(int sum)
+{
+    printf("result is=%d",sum);
+}
+
+void main()
+{
+    int a,b,sum;
+    accept(&a,&b);
+    add(a,b,&sum);
+    display(sum);
+}
+*************************************************************************** 
+3.
+****************************************************************************
+************************************************************************************************************************
+4. Program to add two numbers, memory to store information must be acquired using DYNAMIC MEMORY ALLOCATION techniques .
+************************************************************************************************************************
+#include <stdio.h>
+#include<stdlib.h>
+
+void main()
+{
+    int *a,*b,*sum;
+    a=(int*)malloc(sizeof(int));
+    b=(int*)malloc(sizeof(int));
+ 
+    printf("enter the 2 numbers\n");
+    scanf("%d%d",a,b);
+    *sum=*a+*b;
+    printf("result is %d",*sum);      
+}   
+****************************************************************************************************************************************
+5. Program to add two numbers, memory to store information must be acquired using DYNAMIC MEMORY ALLOCATION techniques using functions .
+*****************************************************************************************************************************************
+#include <stdio.h>
+#include<stdlib.h>
+
+int allocate()
+{
+    int p;
+    p=(int*)malloc(sizeof(int));
+    return p;
+}
+
+void main()
+{
+    int *a,*b,*sum;
+    a=allocate();
+    b=allocate();
+    sum=allocate();
+    
+    printf("enter the 2 numbers\n");
+    scanf("%d%d",a,b);
+    *sum=*a+*b;
+    printf("result is %d",*sum);   
+}   
+*************************************************
+6. Program to add two numbers, using structures.
+*************************************************
+#include <stdio.h>
+
+struct add
+{
+   int a,b,sum;
+};
+
+void main() 
+{
+   struct add num;
+   printf("Enter two numbers\n");
+   scanf("%d%d",&(num.a), &(num.b));
+   num.sum = num.a + num.b;
+   printf("Result is %d\n",num.sum);
+}
+*************************************************************
+7. Program to add two numbers, using structures and functions
+*************************************************************
+#include <stdio.h>
+
+struct add
+{
+   int a,b,sum;
+};
+typedef struct add s;
+
+void accept(s*n)
+{
+   printf("Enter 2 numbers\n");
+   scanf("%d%d",&(n->a), &(n->b));
+}
+void calculate(s *num)
+{
+    num->sum = num->a + num->b;
+}
+void display(s num)
+{
+   printf("Result is %d\n",num.sum);
+}
+int main() 
+{
+   s num;
+   accept(&num);
+   calculate(&num);
+   display(num);   
+}
+
+
+

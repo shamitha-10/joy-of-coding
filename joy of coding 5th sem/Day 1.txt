@@ -1,0 +1,65 @@
+//program 1
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    int arr[50],n;
+    printf("Enter the array size\n");
+    scanf("%d",&n);
+    printf("Enter the array elements\n");
+    for(int i=0;i<n;i++)
+      scanf("%d",&arr[i]);
+      
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i]==arr[j])
+            {
+                printf("The array is not distinct\n");
+                return 1;
+            }
+        }
+    }
+    printf("The array is distinct\n");
+    return 0;
+}
+
+// program 2
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    int arr[50],n,count;
+    printf("Enter the array size\n");
+    scanf("%d",&n);
+    printf("Enter the array elements\n");
+    for(int i=0;i<n;i++)
+      scanf("%d",&arr[i]);
+      
+    for(int i=0;i<n;i++)
+    {
+        count=1;
+        if(arr[i]==-1)
+           continue;
+           
+        else{
+              for(int j=i+1;j<n;j++)
+              {
+                 if(arr[i]==arr[j])
+                  {
+                      count++;
+                      arr[j]=-1;
+                  }
+              }
+              printf("%d : %d \n",arr[i],count);
+            
+            }
+        
+    }
+    
+    return 0;
+}

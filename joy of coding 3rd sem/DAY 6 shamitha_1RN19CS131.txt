@@ -1,0 +1,217 @@
+/*****************************************************************************************************
+Preliminary :: Write C functions ( userdefined) to implement basic string manipulations such as 
+string length, string compare, string concatination, finsing sub string etc 
+/*****************************************************************************************************/
+#include<stdio.h>
+#include<stdlib.h>
+
+void len(char a[])
+{
+    int i=0;
+    while(a[i]!='\0')
+    {
+        i++;
+    }
+    printf(" the length of the string is %d",i);
+    
+}
+
+void concat(char a[],char b[])
+{
+    
+    int i=0,j=0;
+    while(a[i]!='\0')
+    {
+        i++;
+    }
+    while(b[j]!='\0')
+    {
+        a[i+j]=b[j];
+        j++;
+    }
+    a[i+j]='\0';
+    printf("%s",a);
+    
+}
+void compare(char a[],char b[])
+{
+    int i=0,j=0,flag;
+    while(a[i]!='\0' && b[j]!='\0')
+    {
+        if(a[i]==b[j])
+        {
+           flag=1;
+           i++;
+           j++;
+        }
+        else
+        {
+            flag=0;
+            break;
+        }
+         
+    }
+    if(a[i]=='\0'&& b[j]=='\0')
+    {
+        flag==1?printf("they are same\n"):printf("they are different\n");
+    }
+    else
+       printf("they are different\n");
+}
+void main()
+{
+    char a[100],b[100];
+    int choice;
+    for(;;)
+    {
+        printf("\n1:length 2:compare 3:concatination 4:exit\n");
+        printf("enter your choice\n");
+        scanf("%d",&choice);
+        
+        switch(choice)
+        {
+            case 1:printf("enter the string\n");
+                   scanf("%s",a);
+                   len(a);
+                   break;
+            case 2:printf("enter first string\n");
+                   scanf("%s",a);
+                   printf("enter second string\n");
+                   scanf("%s",b);
+                   compare(a,b);
+                   break;
+            case 3:printf("enter first string\n");
+                   scanf("%s",a);
+                   printf("enter second string\n");
+                   scanf("%s",b);
+                   concat(a,b);
+                   break;
+                   
+            case 4:exit(0);
+            
+        }
+    }
+    
+}
+
+
+/*****************************************************************************************************
+1. Write a program to reverse individual words in a given line of string 
+
+Input :  india is great 
+output : aidni si taerg  
+****************************************************************************************************/
+#include<stdio.h>
+#include<string.h>
+
+void rev(char a[])
+{
+    char s[100];
+    int n,i=0;
+    n=strlen(a);
+    while(a[i]!='\0')
+    {
+      s[n-i-1]=a[i];
+      i++;
+    }
+    s[i]='\0';
+    printf("%s",s);
+}
+
+
+void main()
+{
+    char str[100],a[100];
+    int i=0,j=0;
+    
+    printf("enter the string\n");
+    scanf("%[^\n]",str);
+    
+    while(str[i]!='\0')
+    {
+        
+        if(str[i]==' ')
+        {   
+            a[j]='\0';
+            rev(a);
+            printf(" ");
+            j=0;
+        } 
+        a[j]=str[i];
+        j++;
+        i++;
+    }
+    rev(a);
+
+}
+
+
+/*****************************************************************************************************
+ 2.	Write a program to check if two given String is the anagram of 
+	each other( string is saved in a structure)
+
+struct str
+{
+    char cont[100];
+};
+
+An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+typically using all the original letters exactly once. 
+Example
+Race =care
+Eleven plus two = Twelve plus one
+Note inbuilt functions strcmp,strlen & strcpy can be used */
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+struct str
+{
+    char cont[100];
+};
+typedef struct str s;
+
+void check_ana(s a,s b)
+{
+    int n,flag=0;
+    int i,j,count=0;
+    n=strlen(a.cont);
+    for(i=0;i<=n;i++)
+    {
+        for(j=i;j<=n;j++)
+        {
+            if(a.cont[i]==a.cont[j])
+            {
+                count++;
+            }
+        }
+        if(count!=1)
+        {
+            flag=1;
+            break;
+        }
+        else
+          count=0;
+    }
+    (flag==1)? printf("they are not anagram\n"): printf("they are  anagram\n");
+   
+}
+
+void main()
+{
+    s a,b;
+    printf("enter first string\n");
+    scanf("%s",a.cont);
+    printf("enter second string\n");
+    scanf("%s",b.cont);
+    if(strlen(a.cont)!=strlen(b.cont))
+    {
+        printf(" they are not anagram\n");
+        exit(0);
+    }
+    check_ana(a,b);
+
+}
+
+
